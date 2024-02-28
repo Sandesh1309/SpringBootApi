@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Registration Api
+  description: Students registration api
+  version: 1.0.0
+  contact:
+    name: Sandesh
+    email: sandeshhegde130@gmail.com
+paths:
+  /register:
+    post:
+      summary: Register a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        200:
+          description: Registered Successfully
+
+  /user/{userId}:
+    get:
+      summary: Get a user by id
+      parameters:
+        - name: userId
+          in: path
+          schema:
+            type: integer
+          required: true
+      responses:
+        200:
+          description: User retrievd successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        400:
+          description: User not found
+
+
+components:
+  schemas:
+    user:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+
+
+
+
+
+
+
